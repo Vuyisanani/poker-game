@@ -47,7 +47,11 @@ var Deck = /** @class */ (function () {
         }
     }
     Deck.prototype.shuffle = function () {
-        this.cards.sort(function () { return Math.floor(Math.random() * 3 - 1); });
+        var _a;
+        for (var n = this.cards.length; n > 0; n--) {
+            var m = Math.floor(Math.random() * n);
+            _a = [this.cards[m], this.cards[n - 1]], this.cards[n - 1] = _a[0], this.cards[m] = _a[1];
+        }
     };
     Deck.prototype.draw = function () {
         return this.cards.shift();
